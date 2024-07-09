@@ -92,6 +92,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 
 2. 目录结构
+```bat
 .
 ├── app                  # "app" is a Python package
 │   ├── __init__.py      # this file makes "app" a "Python package"
@@ -104,3 +105,4 @@ SET FOREIGN_KEY_CHECKS = 1;
 │   └── internal         # "internal" is a "Python subpackage"
 │       ├── __init__.py  # makes "internal" a "Python subpackage"
 │       └── admin.py     # "admin" submodule, e.g. import app.internal.admin
+```
