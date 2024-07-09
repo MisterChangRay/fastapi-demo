@@ -3,6 +3,7 @@
 /public/storage
 
 /log
+*.log
 __pycache__
 .vscode
 .env.backup
