@@ -5,6 +5,20 @@ fastapi官网: https://fastapi.tiangolo.com/tutorial/sql-databases/
 SQLAlchemy ORM:  https://docs.sqlalchemy.org/en/20/orm/
 
 
+项目启动命令:
+```
+环境要求： python3.10以上版本
+
+部署教程：
+1. 拷贝项目到目标目录
+2. 在项目目录下执行 'pip install -r requirements.txt'
+3. 执行 'pip install pymysql'
+4. 安装完成后，在项目目录下执行 'nohup uvicorn server:app --port=8078 &' 启动服务
+启动命令
+uvicorn server:app --port=8078
+
+```
+
 数据库脚本:
 
 ```sql
