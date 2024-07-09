@@ -9,11 +9,13 @@ from .controller import userController
 from .scheduleService import test
 from .orm.models import SessionLocal
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(
     version="v0.0.1"
     # dependencies=[Depends(get_token_header)]
 )
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 @app.get("/version")
 async def version():
@@ -61,7 +63,6 @@ def init_data():
     scheduler = BackgroundScheduler()
     scheduler.add_job(test, 'cron', second='*/50')
     scheduler.start()
-    
     
 # 入口函数
 if __name__ == "__main__":
