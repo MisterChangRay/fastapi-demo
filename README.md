@@ -1,9 +1,12 @@
 python fastapi 快速开发框架
 
 
+请求url时，需要携带指定header: `token:fake-super-secret-token`
+
+
 fastapi官网: https://fastapi.tiangolo.com/tutorial/sql-databases/
 SQLAlchemy ORM:  https://docs.sqlalchemy.org/en/20/orm/
-
+接口文档访问地址： http://127.0.0.1:8000/docs
 
 项目启动命令:
 ```

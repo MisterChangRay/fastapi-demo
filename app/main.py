@@ -7,7 +7,7 @@ from .dependencies import  get_token_header
 from .controller import consoleController
 from .controller import userController
 from .scheduleService import test
-from .orm.models import SessionLocal
+from .orm.schemas import SessionLocal
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from fastapi.staticfiles import StaticFiles
 
@@ -27,13 +27,8 @@ async def version():
     logger.info("当前版本为: {}", app.version)
     return {"version": app.version}
 
-app.include_router(
-    consoleController.router,
-    prefix="/console",
-    tags=["console"],
-    dependencies=[Depends(get_token_header)],
-    responses={418: {"description": "I'm a teapot"}},
-)
+
+app.include_router( consoleController.router)
 app.include_router(
     userController.router,
     prefix="/user",
@@ -61,7 +56,11 @@ logger.add("./logs/mylog.log", rotation="50 MB")
 @app.on_event('startup')
 def init_data():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(test, 'cron', second='*/50')
+    # 增加计划任务, 每50s执行一次
+    # scheduler.add_job(test, 'cron', second='*/50')
+    # 每2分钟执行一次
+    scheduler.add_job(test, 'cron', minute="*/2")
+    
     scheduler.start()
     
 # 入口函数

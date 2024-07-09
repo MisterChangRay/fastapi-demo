@@ -7,10 +7,10 @@ from sqlalchemy.pool import QueuePool
 
 SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:2vKeG&1.3@47.109.108.16:7501/fastapi_demo"
 
-
+# echo 参数用于打印sql
 engine = create_engine(
     url=SQLALCHEMY_DATABASE_URL, poolclass=QueuePool
-    # , echo=True
+    , echo=True
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
