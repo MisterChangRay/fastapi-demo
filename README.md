@@ -21,8 +21,10 @@ SQLAlchemy ORM:  https://docs.sqlalchemy.org/en/20/orm/
 2. 在项目目录下执行 'pip install -r requirements.txt'
 3. 执行 'pip install pymysql'
 4. 安装完成后，在项目目录下执行 'nohup uvicorn server:app --port=8078 &' 启动服务
+5. 停止服务通过查询端口, kill -9 停止
 启动命令
-uvicorn server:app --port=8078
+
+uvicorn server:app --port=8078 --reload
 
 ```
 
