@@ -1,0 +1,16 @@
+/node_modules
+/public/hot
+/public/storage
+
+
+__pycache__
+.vscode
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/遇到的问题.md
+/数据库修改成sqlserver.md
+
