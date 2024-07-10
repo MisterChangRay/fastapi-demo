@@ -90,6 +90,16 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 
 
+备注:
+
+可以使用 pyarmor 对代码进行混肴
+
+1. 执行 `pip install pyarmor`
+2. 执行命令 `pyarmor g .` 生成混肴代码
+
+
+
+
 
 
 
