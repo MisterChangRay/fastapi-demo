@@ -1,8 +1,8 @@
 from typing import Annotated
-
+from functools import lru_cache
 from fastapi import Header, HTTPException
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
-
+from .configuration import Settings
 
 async def get_token_header(token: str = Header()):
     """全局session校验入口
@@ -18,7 +18,9 @@ async def get_token_header(token: str = Header()):
         raise HTTPException(status_code=400, detail="XToken header invalid")
 
 
-
+@lru_cache
+def get_settings():
+    return Settings()
 
 
 

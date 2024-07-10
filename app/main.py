@@ -1,18 +1,18 @@
-from fastapi import Depends, FastAPI
 import uvicorn
 import pymysql
+from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from loguru import logger
 from apscheduler.schedulers.background import BackgroundScheduler
-from .dependencies import  get_token_header
+from .dependencies import  get_token_header, get_settings
 from .controller import consoleController
 from .controller import userController
 from .scheduleService import test
 from .orm.schemas import SessionLocal
-from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from fastapi.staticfiles import StaticFiles
 
+
 app = FastAPI(
-    version="v0.0.1"
+    version=get_settings().app_version
     # dependencies=[Depends(get_token_header)]
 )
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
@@ -66,3 +66,5 @@ def init_data():
 # 入口函数
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=int(8078))
+    
+    

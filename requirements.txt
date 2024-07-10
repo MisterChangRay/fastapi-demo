@@ -1,0 +1,8 @@
+APScheduler==3.10.4
+fastapi==0.111.0
+loguru==0.7.2
+pydantic==2.8.2
+pydantic_settings==2.3.4
+PyMySQL==1.0.2
+SQLAlchemy==1.4.41
+uvicorn==0.30.1

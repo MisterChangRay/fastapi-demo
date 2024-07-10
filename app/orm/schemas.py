@@ -4,8 +4,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import Session
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String,DateTime, update
 from sqlalchemy.pool import QueuePool
+from ..dependencies import get_settings
 
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:2vKeG&1.3@47.109.108.16:7501/fastapi_demo"
+SQLALCHEMY_DATABASE_URL = get_settings().mysql_url
 
 # echo 参数用于打印sql
 engine = create_engine(

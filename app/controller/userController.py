@@ -13,11 +13,15 @@ router = APIRouter()
 
 
     
-@router.post("/add")
-async def adduser(user: Annotated[models.User, Body(embed=True)],  db: Session = Depends(get_db)) -> models.BaseRes:
+@router.post("/", response_model=models.BaseRes)
+async def adduser(user: Annotated[models.User, Body()],  db: Session = Depends(get_db)) -> models.BaseRes:
     """
     用户列表
     json方式获取数据
+    Body(embed=True), 表示属性为嵌套对象, 也就是属性应该再封装一层
+        当为False时, 提交json为: { "name":"123", "status": 1}
+        当为True时, 提交json为: { "user" : { "name":"123", "status": 1} }
+    
     Returns:
         _type_: _description_
     """
@@ -29,7 +33,7 @@ async def adduser(user: Annotated[models.User, Body(embed=True)],  db: Session =
 
 
 
-@router.get("/", response_model=List[models.User])
+@router.get("/", response_model=models.BaseRes[List[models.User]])
 async def listuser( db: Session = Depends(get_db)) :
     """
     用户列表, 包含分页
@@ -39,7 +43,7 @@ async def listuser( db: Session = Depends(get_db)) :
     """
     
     res =  db.query(schemas.TUser).offset(2).limit(10).all()
-    return res
+    return models.BaseRes(code=0, data=res)
 
 
 
@@ -58,7 +62,7 @@ async def getuser(id: int, db: Session = Depends(get_db)) :
 
 
 @router.put("/", response_model=models.BaseRes )
-async def updateuser(user: Annotated[models.UserUpdate, Body(embed=True)], db: Session = Depends(get_db)) -> models.BaseRes:
+async def updateuser(user: Annotated[models.UserUpdate, Body()], db: Session = Depends(get_db)) -> models.BaseRes:
     """
     根据id更新用户
 
@@ -75,7 +79,7 @@ async def updateuser(user: Annotated[models.UserUpdate, Body(embed=True)], db: S
 
 
 
-@router.delete("/{id}")
+@router.delete("/{id}", response_model=models.BaseRes)
 async def deleteuser(id:int, db: Session = Depends(get_db)) -> models.BaseRes:
     """
     根据id删除用户
@@ -92,7 +96,7 @@ async def deleteuser(id:int, db: Session = Depends(get_db)) -> models.BaseRes:
 
 
 
-@router.post("/transaction/{id}")
+@router.post("/transaction/{id}", response_model=models.BaseRes)
 async def transactionDemo(id:int, db: Session = Depends(get_db)) -> models.BaseRes:
     """
     修改状态，事务演示

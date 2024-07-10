@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from fastapi import APIRouter, Depends, HTTPException
 from loguru import logger
 from ..dependencies import get_token_header
+from ..configuration import Settings
 
 
 
