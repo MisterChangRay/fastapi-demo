@@ -19,10 +19,13 @@ SQLAlchemy ORM:  https://docs.sqlalchemy.org/en/20/orm/
 部署教程：
 1. 拷贝项目到目标目录
 2. 在项目根目录下执行 'pip install -r requirements.txt'
-3. 安装完成后，在项目目录下执行 'nohup uvicorn app.main:app --port=8000 --reload &' 启动服务
-5. 停止服务通过查询端口, kill -9 停止
-启动命令
+3. 新增数据库并将sql在库中初始化
+4. 修改项目`.evn` 配置文件
+5. 安装完成后，在项目根目录下执行 'nohup uvicorn app.main:app --port=8000 --reload &' 启动服务
+6. 停止服务通过查询端口, kill -9 停止
 
+
+启动命令
 uvicorn app.main:app --port=8000 --reload
 
 ```
@@ -65,9 +68,9 @@ CREATE TABLE `t_user`  (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES (1, NULL, NULL, NULL, NULL);
-INSERT INTO `t_user` VALUES (2, NULL, NULL, NULL, NULL);
-INSERT INTO `t_user` VALUES (3, '123', NULL, NULL, NULL);
+INSERT INTO `t_user`(`id`, `name`, `status`, `create_time`, `update_time`) VALUES (1, '123', 1, '2024-07-10 10:04:00', '2024-07-10 10:04:02');
+INSERT INTO `t_user`(`id`, `name`, `status`, `create_time`, `update_time`) VALUES (2, '123', 1, '2024-07-10 10:04:07', '2024-07-10 10:04:09');
+
 
 -- ----------------------------
 -- Table structure for t_user_addresss
