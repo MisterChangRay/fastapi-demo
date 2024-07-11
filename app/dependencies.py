@@ -1,8 +1,11 @@
 from typing import Annotated
-from functools import lru_cache
 from fastapi import Header, HTTPException
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from .configuration import Settings
+from .orm import schemas
+from .orm.schemas import SessionLocal
+import datetime
+from sqlalchemy.orm import Session
 
 async def get_token_header(token: str = Header()):
     """全局session校验入口
@@ -18,9 +21,6 @@ async def get_token_header(token: str = Header()):
         raise HTTPException(status_code=400, detail="XToken header invalid")
 
 
-@lru_cache
-def get_settings():
-    return Settings()
 
 
 
@@ -37,3 +37,6 @@ def get_db(request: Request):
         _type_: _description_
     """
     return request.state.db
+
+
+

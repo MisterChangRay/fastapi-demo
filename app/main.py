@@ -3,10 +3,11 @@ import pymysql
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from loguru import logger
 from apscheduler.schedulers.background import BackgroundScheduler
-from .dependencies import  get_token_header, get_settings
+from .dependencies import  get_token_header
+from .configuration import get_settings
 from .controller import consoleController
 from .controller import userController
-from .scheduleService import test
+from .scheduleService import scheduleForExpireKeyValueTalbe
 from .orm.schemas import SessionLocal
 from fastapi.staticfiles import StaticFiles
 
@@ -58,8 +59,8 @@ def init_data():
     scheduler = BackgroundScheduler()
     # 增加计划任务, 每50s执行一次
     # scheduler.add_job(test, 'cron', second='*/50')
-    # 每2分钟执行一次
-    scheduler.add_job(test, 'cron', minute="*/2")
+    # 每1分钟执行一次
+    scheduler.add_job(scheduleForExpireKeyValueTalbe, 'cron', minute="*/1")
     
     scheduler.start()
     

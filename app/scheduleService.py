@@ -1,10 +1,11 @@
 
 from loguru import logger
+from .service import KVService
 
-def test():
+def scheduleForExpireKeyValueTalbe():
     """
-    一个演示用的计划任务
-    方法需要在 main.py 中注册
+    计划任务
+    用于清除KV表中的过期数据
     """
-    logger.info("测试, 每3秒执行一次")
+    KVService.expireData()
     pass
