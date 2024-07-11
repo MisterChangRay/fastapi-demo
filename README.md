@@ -21,12 +21,11 @@ SQLAlchemy ORM:  https://docs.sqlalchemy.org/en/20/orm/
 2. 在项目根目录下执行 'pip install -r requirements.txt'
 3. 新增数据库并将sql在库中初始化
 4. 修改项目`.evn` 配置文件
-5. 安装完成后，在项目根目录下执行 'nohup uvicorn app.main:app --port=8000 --reload &' 启动服务
+5. 安装完成后，在项目根目录下执行 'nohup uvicorn app.main:app --host=0.0.0.0 --port=8000  --reload &' 启动服务
 6. 停止服务通过查询端口, kill -9 停止
 
-
 启动命令
-uvicorn app.main:app --port=8000 --reload
+uvicorn app.main:app --host=0.0.0.0 --port=8000 --reload
 
 ```
 
