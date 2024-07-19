@@ -1,18 +1,11 @@
 python fastapi 快速开发框架
 
-
-请求url时，需要携带指定header: `token:fake-super-secret-token`
-
-修改orm模块下的数据库连接地址, 目前只支持mysql
+### 1.简介
+这是一个简单的，python-web项目。主要用于可快速开发pyhonweb项目。
 
 
-fastapi官网: https://fastapi.tiangolo.com/tutorial/sql-databases/
+### 2.食用方法
 
-SQLAlchemy ORM:  https://docs.sqlalchemy.org/en/20/orm/
-
-接口文档访问地址： http://127.0.0.1:8000/docs
-
-项目启动命令:
 ```
 环境要求： python3.10以上版本
 
@@ -30,18 +23,19 @@ uvicorn app.main:app --host=0.0.0.0 --port=8000 --reload
 ```
 
 
+### 3. 备注说明
 
-备注:
+- 请求url时，需要携带指定header: `token:fake-super-secret-token`
+- 修改orm模块下的数据库连接地址, 目前只支持mysql
+- fastapi官网: https://fastapi.tiangolo.com/tutorial/sql-databases/
+- SQLAlchemy ORM:  https://docs.sqlalchemy.org/en/20/orm/
+- 接口文档访问地址： http://127.0.0.1:8000/docs
+- 可以使用 pyarmor 对代码进行混肴
+    1. 执行 `pip install pyarmor`
+    2. 执行命令 `pyarmor g .` 生成混肴代码
 
-可以使用 pyarmor 对代码进行混肴
 
-1. 执行 `pip install pyarmor`
-2. 执行命令 `pyarmor g .` 生成混肴代码
-
-
-
-
-2. 目录结构
+### 4. 目录结构
 ```bat
 .
 ├── app                  # "app" is a Python package
@@ -58,7 +52,7 @@ uvicorn app.main:app --host=0.0.0.0 --port=8000 --reload
 ```
 
 
-### 版本记录
+### 5. 版本记录
 
 V0.0.3
 1. 新增使用mysql实现kv访问操作
