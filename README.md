@@ -56,3 +56,21 @@ uvicorn app.main:app --host=0.0.0.0 --port=8000 --reload
 │       ├── __init__.py  # makes "internal" a "Python subpackage"
 │       └── admin.py     # "admin" submodule, e.g. import app.internal.admin
 ```
+
+
+### 版本记录
+
+V0.0.3
+1. 新增使用mysql实现kv访问操作
+
+
+V0.0.2
+1. 新增日志框架，存放日志
+2. 配置日志打印格式
+3. 新增支持配置文件
+
+V0.0.1
+1. 搭建一个简单的fastapi-demo 项目
+2. 支持http接口请求，文件分目录存放
+3. 支持请求参数校验
+4. 支持mysql数据库
