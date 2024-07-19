@@ -22,6 +22,8 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
+
+# t_user 表结构定义
 class TUser(Base):
     __tablename__ = "t_user"
 
@@ -32,6 +34,7 @@ class TUser(Base):
     update_time = Column(DateTime)
     
 
+# t_keyvalue 表结构定义
 class TKeyValue(Base):
     __tablename__ = "t_keyvalue"
 
