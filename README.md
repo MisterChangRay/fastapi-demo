@@ -37,18 +37,37 @@ uvicorn app.main:app --host=0.0.0.0 --port=8000 --reload
 
 ### 4. 目录结构
 ```bat
-.
-├── app                  # "app" is a Python package
-│   ├── __init__.py      # this file makes "app" a "Python package"
-│   ├── main.py          # "main" module, e.g. import app.main
-│   ├── dependencies.py  # "dependencies" module, e.g. import app.dependencies
-│   └── routers          # "routers" is a "Python subpackage"
-│   │   ├── __init__.py  # makes "routers" a "Python subpackage"
-│   │   ├── items.py     # "items" submodule, e.g. import app.routers.items
-│   │   └── users.py     # "users" submodule, e.g. import app.routers.users
-│   └── internal         # "internal" is a "Python subpackage"
-│       ├── __init__.py  # makes "internal" a "Python subpackage"
-│       └── admin.py     # "admin" submodule, e.g. import app.internal.admin
+D:.
+└─fastapi-demo
+    │  .env                                         # 项目配置文件, 使用configuration.py读取
+    │  .gitignore
+    │  fastapi_demo.sql                             # 数据库文件, 记得导入数据时
+    │  readme.md
+    │  requirements.txt
+    ├─app
+    │  │  configuration.py                          # 配置文件映射实体
+    │  │  dependencies.py                           # 一些公共依赖函数
+    │  │  main.py                                   # 启动类
+    │  │  scheduleService.py                        # 计划调度任务参考实现
+    │  │  __init__.py
+    │  │
+    │  ├─controller                                 # 接口定义目录
+    │  │  │  consoleController.py
+    │  │  │  userController.py
+    │  │  │  __init__.py
+    │  │  │
+    │  │  ├─models
+    │  │  │  │  models.py
+    │  ├─orm                                        # orm 定义
+    │  │  │  schemas.py
+    │  │  │  __init__.py
+    │  ├─service                                    # 公用service接口
+    │  │  │  KVService.py
+    │  │  │  __init__.py
+    │  ├─static                                     # 静态文件放这个目录就可以http直接访问,访问路径:/static/test.json
+    │  │      test.json
+    └─logs                                          # 日志目录
+            mylog.log
 ```
 
 
